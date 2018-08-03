@@ -16,6 +16,10 @@
 minikube start
 ```
 
+```
+minikube addons enable ingress
+```
+
 ### kubectl
 ```
 kubectl get pods
@@ -49,4 +53,14 @@ kubeless function call hello  --data  'aa'
 ### `Update a function`
 ```
 kubeless function update hello --runtime python3.6 --handler hello.handler --from-file hello.py
+```
+
+### `Create a HTTP trigger`
+```
+kubeless  trigger http create  hello  --function-name hello --path hello
+```
+
+### `Testing`
+```
+curl --header "Content-Type:application/json"  --header 'Host: hello.com' 192.168.99.100/hello
 ```
