@@ -28,3 +28,25 @@ kubectl get pods
 ```
 kubeless function list
 ```
+
+### Example function
+```
+def handler(event, context):
+    print(event)
+    return {'Hello': 'World'}
+```
+
+### `Deploy functions`
+```
+kubeless function deploy hello --runtime python3.6 --handler hello.handler --from-file hello.py
+```
+
+### `Call a function`
+```
+kubeless function call hello  --data  'aa'
+```
+
+### `Update a function`
+```
+kubeless function update hello --runtime python3.6 --handler hello.handler --from-file hello.py
+```
